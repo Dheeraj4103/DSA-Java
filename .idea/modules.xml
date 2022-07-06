@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.iml" filepath="$PROJECT_DIR$/.iml" />
+      <module fileurl="file://$PROJECT_DIR$/5_Seaching_Sorting/5_Seaching_Sorting.iml" filepath="$PROJECT_DIR$/5_Seaching_Sorting/5_Seaching_Sorting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/6_String.iml" filepath="$PROJECT_DIR$/6_String.iml" />
+      <module fileurl="file://$PROJECT_DIR$/6_Strings/6_Strings.iml" filepath="$PROJECT_DIR$/6_Strings/6_Strings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/7_Recursion/7_Recursion.iml" filepath="$PROJECT_DIR$/7_Recursion/7_Recursion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/classes/classes.iml" filepath="$PROJECT_DIR$/classes/classes.iml" />
+    </modules>
+  </component>
+</project>
