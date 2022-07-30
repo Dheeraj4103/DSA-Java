@@ -6,6 +6,8 @@ public class introtooop {
 //        for (int i = 0; i < 100000000; i++) {
 //            random = new Student();
 //        }
+
+
     }
 }
 

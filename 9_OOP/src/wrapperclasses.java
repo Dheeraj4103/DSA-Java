@@ -9,8 +9,10 @@ public class wrapperclasses {
 
         final Integer A = 10;
         //A = 12; // cannot modify value of A
+
+
     }
-    static void swap(Integer a, Integer b){
+    public static void swap(Integer a, Integer b){
         Integer temp = a;
         a = b;
         b = temp;
