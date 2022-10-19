@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class PrimeNumbersinRange {
     public static void main(String[] args) {
-        getPrimeNumbers(100);
+        getPrimeNumbers(27);
     }
     // Sieve of Erathonos
     static void getPrimeNumbers(int n){
