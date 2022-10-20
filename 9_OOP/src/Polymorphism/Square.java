@@ -1,5 +1,7 @@
 package Polymorphism;
 
+import Access_Modifiers.A;
+
 public class Square extends Shape {
     @Override
     void area() {
@@ -15,5 +17,6 @@ public class Square extends Shape {
         square.area();
         square.area1();
         System.out.println(square);
+
     }
 }
