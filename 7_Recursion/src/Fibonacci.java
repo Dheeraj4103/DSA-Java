@@ -2,8 +2,8 @@ import java.util.Arrays;
 
 public class Fibonacci {
     public static void main(String[] args) {
-        long fibs[] = new long[51];
-        System.out.println(FibwithDP(50, fibs));
+        long fibs[] = new long[101];
+        System.out.println(FibwithDP(100, fibs));
         System.out.println(Arrays.toString(fibs));
     }
     static int Fib(int n){
