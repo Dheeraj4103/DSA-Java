@@ -31,6 +31,7 @@ public class Linkedlist {
             this.tail = temp;
         }
         this.size++;
+        Display();
     }
 
     public void insertAtLast(int value){
@@ -43,6 +44,45 @@ public class Linkedlist {
         }
 
         this.size++;
+    }
+
+    public void insertRec(int value, int index){
+        this.head = insertRec(value, index, this.head);
+        Display();
+        return;
+    }
+
+    private Node insertRec(int value, int index, Node curr_node){
+        if (index == 0){
+            Node node = new Node(value);
+            node.next = curr_node;
+            this.size++;
+            return node;
+        }
+
+        curr_node.next = insertRec(value, index - 1, curr_node.next);
+        return curr_node;
+    }
+
+    public void deleteDuplicate(){
+        Node list = new Node(head.value);
+        Node tail = list;
+        Node temp = head.next;
+
+        while (temp != null){
+            if (tail.value != temp.value){
+                tail.next = temp;
+                tail = tail.next;
+            }
+            temp = temp.next;
+        }
+        tail.next = null;
+        tail = list;
+        while (tail != null){
+            System.out.print(tail.value + " -> ");
+            tail = tail.next;
+        }
+        System.out.println("END\n");
     }
 
     public void insert(int value, int index){

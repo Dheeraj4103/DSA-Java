@@ -1,10 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-        DoublyLinkedList list = new DoublyLinkedList();
-        list.insertAtFirst(2);
-        list.insertAtFirst(3);
-        list.insertAtLast(5);
-        list.insert(10, 3);
-        list.delete(2);
+        Linkedlist list = new Linkedlist();
+        list.insertAtFront(3);
+        list.insertAtFront(3);
+        list.insertAtFront(2);
+        list.insertAtFront(2);
+        list.insertAtFront(1);
+        list.deleteDuplicate();
     }
 }
