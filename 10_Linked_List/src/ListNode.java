@@ -6,20 +6,19 @@ public class ListNode {
       ListNode(int val, ListNode next) { this.val = val; this.next = next; }
 
       public static void main(String[] args) {
-            ListNode headA = new ListNode(5);
-            insertAtLast(headA, 6);
-            insertAtLast(headA, 1);
-            insertAtLast(headA, 8);
+            ListNode headA = new ListNode(1);
+            insertAtLast(headA, 2);
+            insertAtLast(headA, 3);
+            insertAtLast(headA, 3);
+            insertAtLast(headA, 4);
             insertAtLast(headA, 4);
             insertAtLast(headA, 5);
+//            insertAtLast(headA, );
+//            insertAtLast(headA, 9);
 
-            ListNode headB = new ListNode(4);
-            insertAtLast(headB, 1);
-            insertAtLast(headB, 8);
-            insertAtLast(headB, 4);
-            insertAtLast(headB, 5);
-
-            getIntersectionNode(headA, headB);
+//            reverseAltKGroup(headA, 3);
+//            reverseBetween(headA, 1, 3);
+            deleteDuplicates(headA);
       }
 
       static void insertAtLast(ListNode head, int val){
@@ -45,12 +44,42 @@ public class ListNode {
             return head;
       }
 
+      public static ListNode rotateRight(ListNode head, int k) {
+            if (head == null || head.next == null){
+                  return head;
+            }
+
+            int length = 1;
+            ListNode tail = head;
+            while (tail.next != null){
+                  length++;
+                  tail = tail.next;
+            }
+
+            int diff = k % length;
+
+            if (diff == 0){
+                  return head;
+            }
+            ListNode temp = head;
+            ListNode prev = null;
+            for (int i = 0; i < length - diff; i++){
+                  prev = temp;
+                  temp = temp.next;
+            }
+            prev.next = null;
+            tail.next = head;
+            head = temp;
+            return head;
+      }
+
       public static ListNode reverseBetween(ListNode head, int left, int right) {
             if (head == null ||head.next == null){
                   return head;
             }
 
             ListNode current = head;
+            boolean isHead = false;
             ListNode newHead = null;
             ListNode prev = null;
 
@@ -58,21 +87,71 @@ public class ListNode {
                   prev = current;
                   current = current.next;
             }
-            newHead = prev;
-            prev = current;
+            if (current == head){
+                  isHead = true;
+                  prev = current;
+            }
+            newHead = current;
+
             for (int i = left; i < right; i++){
                   ListNode temp = current.next;
                   current.next = temp.next;
-                  temp.next = prev;
-                  if (current == head){
+                  if (isHead){
+                        temp.next = head;
                         head = temp;
+                  } else {
+                        temp.next = newHead;
+                        newHead = temp;
+                        prev.next = newHead;
                   }
-                  else{
-                        newHead.next = temp;
-                  }
-                  prev = temp;
             }
 
+            return head;
+      }
+
+      public static ListNode reverseKGroup(ListNode head, int k) {
+            if (k <= 1 || head == null){
+                  return head;
+            }
+            ListNode curr = head;
+            int left = 1;
+            int right = left + k - 1;
+            while (curr != null){
+                  for (int i = left; i <= right; i++){
+                       if (curr == null){
+                             return head;
+                       }
+                       curr = curr.next;
+                  }
+                  head = reverseBetween(head, left, right);
+                  left = right+1;
+                  right = left + k - 1;
+            }
+            return head;
+      }
+
+      public static ListNode reverseAltKGroup(ListNode head, int k) {
+            if (k <= 1 || head == null){
+                  return head;
+            }
+            ListNode curr = head;
+            int left = 1;
+            int right = left + k - 1;
+            boolean skip = false;
+            while (curr != null){
+                  for (int i = left; i <= right; i++){
+                        if (curr == null){
+                              return head;
+                        }
+                        curr = curr.next;
+                  }
+                  skip = skip ^ true;
+                  if (skip) {
+                        head = reverseBetween(head, left, right);
+                  }
+                  left = right+1;
+                  right = left + k - 1;
+            }
             return head;
       }
 
@@ -122,7 +201,7 @@ public class ListNode {
             ListNode a = headA;
             ListNode b = headB;
 
-
+            return null;
       }
 
       public static ListNode helper1(ListNode a, ListNode b, ListNode ans){
@@ -138,5 +217,22 @@ public class ListNode {
             }
             return ans;
       }
+      static ListNode deleteDuplicates(ListNode head) {
+            ListNode temp = head;
+            ListNode prev = null;
+            while (temp.next != null){
 
+                  if (temp.next != null && temp.val == temp.next.val){
+                        while (temp.val == temp.next.val){
+                              temp = temp.next;
+                        }
+                        prev.next = temp.next;
+                        temp = temp.next;
+                  } else {
+                        prev = temp;
+                        temp = temp.next;
+                  }
+            }
+            return head;
+      }
   }
